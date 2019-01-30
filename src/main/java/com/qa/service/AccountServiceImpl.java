@@ -27,5 +27,11 @@ public class AccountServiceImpl implements AccountService {
 		this.repo = repo;
 	}
 
+
+	public int getNumberOfAccountsByFirstName(String firstName) {
+		
+		return repo.getNumberOfAccountsByFirstName(firstName);
+	}
+
 	
 }

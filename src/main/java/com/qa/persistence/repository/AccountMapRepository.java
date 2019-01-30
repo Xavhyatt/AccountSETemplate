@@ -49,5 +49,15 @@ public class AccountMapRepository implements AccountRepository{
 		return null;
 	}
 
+	
+	public int getNumberOfAccountsByFirstName(String firstName) {
+		return 0;
+		
+	
+	}
+
+
+	
+
 
 }
