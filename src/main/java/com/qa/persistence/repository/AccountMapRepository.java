@@ -51,7 +51,17 @@ public class AccountMapRepository implements AccountRepository{
 
 	
 	public int getNumberOfAccountsByFirstName(String firstName) {
-		return 0;
+		int numberOfHits = 0;
+		for( Account acc: accountMap.values()) {
+			
+			if(acc.getFirstName().equals(firstName)) {
+				numberOfHits ++;
+			}
+		}
+		
+		return numberOfHits;
+	}
+	
 		
 	
 	}
@@ -60,4 +70,4 @@ public class AccountMapRepository implements AccountRepository{
 	
 
 
-}
+
