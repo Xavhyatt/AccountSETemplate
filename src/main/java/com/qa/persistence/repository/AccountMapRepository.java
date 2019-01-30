@@ -1,10 +1,9 @@
 package com.qa.persistence.repository;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.inject.Inject;
 
 import com.qa.persistence.domain.Account;
 
@@ -58,7 +57,7 @@ public class AccountMapRepository implements AccountRepository{
 				numberOfHits ++;
 			}
 		}
-		
+		 
 		return numberOfHits;
 	}
 	

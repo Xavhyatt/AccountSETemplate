@@ -17,15 +17,14 @@ public class AccountServiceTest {
 
 	@Before
 	public void setup() {
-		
 	
 	}
-	
+	 
 	@Test
 	public void addAccountTest() {
 		String msg = repo.createAccount("{'id':1,'firstName':'Xav','lastName':'Hyatt','accountNum':'123456'}");
 		Assert.assertEquals("Account creation unsuccessful","Xav",msg);
-	}
+	} 
 	
 	@Test
 	public void add2AccountTest() {
