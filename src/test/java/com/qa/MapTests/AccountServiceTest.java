@@ -125,9 +125,20 @@ public class AccountServiceTest {
 		Assert.assertEquals("Account creation unsuccessful","Xav",msg);
 	}
 	
+
+	@Test
+	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
+		repo.createAccount("{'id':1,'firstName':'Jess','lastName':'Smith','accountNum':'123456'}");
+		repo.createAccount("{'id':2,'firstName':'Josh','lastName':'Jones','accountNum':'112233'}");
+		repo.createAccount("{'id':3,'firstName':'Tom','lastName':'Bloggs','accountNum':'123123'}");
+		repo.createAccount("{'id':4,'firstName':'Matt','lastName':'Hunt','accountNum':'654321'}");
+		
+		System.out.println(repo.getNumberOfAccountsByFirstName("Tom"));
+		Assert.assertEquals("Incorrect number of accounts found", 0, repo.getNumberOfAccountsByFirstName("Paul"));
+	}
 	
 	@Test
-	public void getAllAccountsByFirstNameTestWithSingle() {
+	public void getCountForFirstNamesInAccountWhenOne() {
 		repo.createAccount("{'id':1,'firstName':'Jess','lastName':'Smith','accountNum':'123456'}");
 		repo.createAccount("{'id':2,'firstName':'Josh','lastName':'Jones','accountNum':'112233'}");
 		repo.createAccount("{'id':3,'firstName':'Tom','lastName':'Bloggs','accountNum':'123123'}");
@@ -136,9 +147,9 @@ public class AccountServiceTest {
 		System.out.println(repo.getNumberOfAccountsByFirstName("Tom"));
 		Assert.assertEquals("Incorrect number of accounts found", 1, repo.getNumberOfAccountsByFirstName("Tom"));
 	}
-	
+
 	@Test
-	public void getAllAccountsByFirstNameTestWithMulti() {
+	public void getCountForFirstNamesInAccountWhenMult() {
 		repo.createAccount("{'id':1,'firstName':'Tom','lastName':'Smith','accountNum':'123456'}");
 		repo.createAccount("{'id':2,'firstName':'Josh','lastName':'Jones','accountNum':'112233'}");
 		repo.createAccount("{'id':3,'firstName':'Tom','lastName':'Bloggs','accountNum':'123123'}");
@@ -147,22 +158,6 @@ public class AccountServiceTest {
 		
 		System.out.println(repo.getNumberOfAccountsByFirstName("Tom"));
 		Assert.assertEquals("Incorrect number of accounts found", 2, repo.getNumberOfAccountsByFirstName("Tom"));
-		
-	}
-
-	@Test
-	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		
-	}
-	
-	@Test
-	public void getCountForFirstNamesInAccountWhenOne() {
-		
-	}
-
-	@Test
-	public void getCountForFirstNamesInAccountWhenMult() {
-		
 	}
 
 }
