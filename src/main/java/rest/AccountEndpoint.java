@@ -13,12 +13,6 @@ public class AccountEndpoint {
 	@Inject
 	private AccountService service;
 
-	
-	
-	
-	
-	
-	
 	@Path("/createAccount")
 	@POST
 	@Produces({"application/json"})
