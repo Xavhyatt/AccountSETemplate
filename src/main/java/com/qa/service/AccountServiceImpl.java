@@ -38,5 +38,11 @@ public class AccountServiceImpl implements AccountService {
 		return repo.getNumberOfAccountsByFirstName(firstName);
 	}
 
+	@Override
+	public String updateAccount(Long id, String account) {
+		
+		return repo.updateAccount(id, account);
+	}
+
 	
 }
