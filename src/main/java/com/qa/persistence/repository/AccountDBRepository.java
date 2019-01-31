@@ -1,10 +1,12 @@
 package com.qa.persistence.repository;
 
-import static javax.transaction.Transactional.TxType.SUPPORTS;
 import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.Collection;
 
+import javax.enterprise.inject.Default;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -15,12 +17,14 @@ import com.qa.persistence.domain.Account;
 import util.JSONUtil;
 
 @Transactional(SUPPORTS)
+@Default
 public class AccountDBRepository implements AccountRepository{
 	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
 	
-	private JSONUtil util = new JSONUtil();
+	@Inject
+	private JSONUtil util;
 
 	@Override
 	public String getAllAccounts() {
@@ -52,6 +56,7 @@ public class AccountDBRepository implements AccountRepository{
 	public String updateAccount(Long id, String account) {
 		Account anAccount = em.find(Account.class, id);
 		if(anAccount != null) {
+			em.remove(anAccount);
 			anAccount.setAccountNum(account);
 			em.persist(anAccount);
 		}
