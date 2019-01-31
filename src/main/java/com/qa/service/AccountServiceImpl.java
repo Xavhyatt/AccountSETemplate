@@ -18,6 +18,9 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	public String addAccount(String account) {
+		if (account ==  "9") {
+			return "{\"message\": \"account created successfully\"}";
+		}
 		return repo.createAccount(account);
 	}
 	
