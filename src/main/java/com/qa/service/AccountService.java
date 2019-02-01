@@ -6,9 +6,9 @@ public interface AccountService {
 	
 	String addAccount(String account);
 	
-	String deleteAccount(Long id);
+	String deleteAccount(int id);
 	
-	String updateAccount(Long id, String account);
+	String updateAccount(int id, String account);
 	
 	int getNumberOfAccountsByFirstName(String firstName);
 

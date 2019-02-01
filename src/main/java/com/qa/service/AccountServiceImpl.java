@@ -19,12 +19,13 @@ public class AccountServiceImpl implements AccountService {
 
 	public String addAccount(String account) {
 		if (account ==  "9") {
-			return "{\"message\": \"account created successfully\"}";
-		}
+			return "{\"message\": \"Account number barred\"}";
+		} else {
 		return repo.createAccount(account);
+		}
 	}
 	
-	public String deleteAccount(Long id) {
+	public String deleteAccount(int id) {
 		return repo.deleteAccount(id);
 	}
 	
@@ -39,10 +40,12 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public String updateAccount(Long id, String account) {
+	public String updateAccount(int id, String account) {
 		
 		return repo.updateAccount(id, account);
 	}
+
+
 
 	
 }

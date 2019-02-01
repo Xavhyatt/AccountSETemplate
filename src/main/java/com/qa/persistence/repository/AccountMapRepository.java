@@ -13,7 +13,7 @@ import util.JSONUtil;
 @Alternative
 public class AccountMapRepository implements AccountRepository{
 	
-	Map<Long, Account> accountMap = new HashMap<>();
+	Map<Integer, Account> accountMap = new HashMap<>();
 	
 	
 	private JSONUtil util = new JSONUtil();
@@ -34,7 +34,7 @@ public class AccountMapRepository implements AccountRepository{
 		return acc.getFirstName();
 	}
 
-	public String deleteAccount(Long id) {
+	public String deleteAccount(int id) {
 		String msg = "";
 		if(accountMap.containsKey(id)) {
 			accountMap.remove(id);
@@ -45,7 +45,7 @@ public class AccountMapRepository implements AccountRepository{
 		return msg;
 	}
 
-	public String updateAccount(Long id, String account) {
+	public String updateAccount(int id, String account) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -62,7 +62,8 @@ public class AccountMapRepository implements AccountRepository{
 		 
 		return numberOfHits;
 	}
-	
+
+
 		
 	
 	}

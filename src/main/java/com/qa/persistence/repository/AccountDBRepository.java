@@ -43,25 +43,26 @@ public class AccountDBRepository implements AccountRepository{
 
 	@Override
 	@Transactional(REQUIRED)
-	public String deleteAccount(Long id) {
-		Account account = em.find(Account.class, id);
-		if (account != null) {
-			em.remove(account);
+	public String deleteAccount(int id) {
+		Account accountInDB = findAccount(id);
+		if (accountInDB != null) {
+			em.remove(accountInDB);
 		}
-		return "{\"message\": \"account deleted successfully\"}";
+		return "{\"message\": \"account sucessfully deleted\"}";
 	}
 
 	@Override
 	@Transactional(REQUIRED)
-	public String updateAccount(Long id, String account) {
+	public String updateAccount(int id, String account) {
 		Account anAccount = em.find(Account.class, id);
 		if(anAccount != null) {
 			em.remove(anAccount);
 			anAccount.setAccountNum(account);
 			em.persist(anAccount);
+			return "{\"message\": \"account Number changed successfully\"}";
 		}
 		
-		return "{\"message\": \"account Number changed successfully\"}";
+		return "{\"message\": \"account Number change unsuccessful\"}";
 	}
 
 	@Override
@@ -71,6 +72,18 @@ public class AccountDBRepository implements AccountRepository{
 		Collection<Account> accounts = (Collection<Account>) query.getResultList();
 		numberOfAcc = accounts.size();
 		return numberOfAcc;
+	}
+	
+	private Account findAccount(int id) {
+		return em.find(Account.class, id);
+	}
+
+	public void setManager(EntityManager manager) {
+		this.em = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
 	}
 
 }

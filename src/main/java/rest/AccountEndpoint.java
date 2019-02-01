@@ -1,12 +1,13 @@
 package rest;
 
 import javax.inject.Inject;
-import javax.websocket.server.PathParam;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.qa.service.AccountService;
@@ -32,17 +33,17 @@ public class AccountEndpoint {
 	}
 	
 	
-	@Path("/account/{id}")
+	@Path("/deleteAccount/{id}")
 	@DELETE
-	@Produces({"application/json"})
-	public String deleteAccount(@PathParam("id") Long id ) {
+	@Produces({ "application/json" })
+	public String deleteAccount(@PathParam("id") int id) {
 		return service.deleteAccount(id);
 	}
 	
-	@Path("account/{id}")
+	@Path("/account/{id}")
 	@PUT
 	@Produces({"application/json"})
-	public String updateAccount(@PathParam("id")Long id, String account) {
+	public String updateAccount(@PathParam("id")int id, String account) {
 		return service.updateAccount(id, account);
 	}
 	
